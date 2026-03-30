@@ -665,3 +665,183 @@ body {
     color: #888;
     margin-top: 20px;
 }
+/* ===============================
+   СТРАНИЦА ТОВАРА (tomatOne.html)
+   =============================== */
+
+.t-one-body {
+    
+    background-color: #f0f0f0 !important; 
+    
+   
+    background-image: url('background-tomatoes.png'); 
+    
+    
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed; 
+    background-size: cover;
+    
+    
+    background-blend-mode: overlay; 
+    
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    color: #333;
+}
+
+
+.t-one-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+
+.t-one-back-link {
+    color: #7cb342;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 25px;
+}
+
+
+.t-one-main-grid {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+
+.t-one-info {
+    flex: 1.2;
+}
+
+.t-one-title {
+    font-size: 42px;
+    color: #2e4a62;
+    margin: 0 0 5px 0;
+    font-family: serif;
+}
+
+.t-one-subtitle {
+    font-size: 28px;
+    color: #7cb342;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+
+.t-one-promo-badge {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 30px 0;
+}
+
+
+.t-one-promo-icon {
+    width: 70px;
+    height: auto;
+    object-fit: contain;
+}
+
+.t-one-promo-text {
+    color: #e74c3c;
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+
+.t-one-section-title {
+    color: #7cb342;
+    text-transform: uppercase;
+    font-size: 18px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+    margin: 30px 0 20px 0;
+}
+
+.t-one-specs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.t-one-spec-block h4 {
+    color: #2e5a31;
+    font-size: 19px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #7cb342;
+    display: inline-block;
+}
+
+.t-one-spec-block ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.t-one-spec-block ul li {
+    position: relative;
+    padding-left: 15px;
+    margin-bottom: 8px;
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+.t-one-spec-block ul li::before {
+    content: "•";
+    color: #7cb342;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+
+.t-one-image-side {
+    flex: 1;
+    text-align: center;
+}
+
+.t-one-main-img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    margin-bottom: 20px;
+}
+
+
+.t-one-download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 2px solid #2e5a31;
+    border-radius: 50px;
+    padding: 10px 25px;
+    color: #2e5a31;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.t-one-download-btn:hover {
+    background-color: #2e5a31;
+    color: #fff;
+}
+
+
+@media (max-width: 850px) {
+    .t-one-main-grid {
+        flex-direction: column;
+    }
+    .t-one-image-side {
+        order: -1; 
+    }
+}
