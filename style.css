@@ -545,9 +545,9 @@ body {
 
 .tomato-hero-img {
     width: 100%;
-    height: auto;
+    max-height:500px;
     display: block;
-    border-top: 4px solid #3498db;
+  object-fit: cover;
 }
 
 .tomato-main-content {
@@ -1046,4 +1046,12 @@ h1 {
     padding-top: 15px;
     font-size: 11px;
     color: #7a8e98;
+}
+/* Фикс для одинакового размера картинок груш */
+.tomato-product-item img {
+    width: 100%;       /* Растягиваем на всю ширину карточки */
+    height: 250px;      /* Задаем фиксированную высоту (можешь поменять под себя) */
+    object-fit: cover;  /* Самое важное: картинка обрезается и заполняет блок, не растягиваясь уродливо */
+    object-position: center; /* Центрируем грушу в кадре */
+    display: block;
 }
