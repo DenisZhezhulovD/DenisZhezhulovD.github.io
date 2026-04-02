@@ -1,0 +1,265 @@
+/* ==========================================================================
+   1. ГЛОБАЛЬНЫЕ НАСТРОЙКИ (Безопасные для всех устройств)
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Убираем горизонтальный скролл, который часто ломает мобилки */
+html, body {
+    overflow-x: hidden;
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* ==========================================================================
+   2. ТОЛЬКО ДЛЯ МОБИЛЬНЫХ И ПЛАНШЕТОВ (max-width: 1024px)
+   Этот блок НЕ затронет компьютерную версию
+   ========================================================================== */
+@media screen and (max-width: 1024px) {
+
+    /* Исправляем шапку: логотип и меню в колонку */
+    .header-flex, .tomato-header-top {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        height: auto !important;
+        padding: 20px 10px !important;
+    }
+
+    .header-right, .tomato-search-container {
+        width: 100% !important;
+        margin-top: 15px !important;
+        align-items: center !important;
+    }
+
+    /* Навигация: разрешаем кнопкам переноситься, чтобы не резало */
+    .nav ul, .tomato-nav ul {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        padding: 0 !important;
+    }
+
+    /* Сетки продуктов: делаем 2 колонки вместо 4 */
+    .tomato-products-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 15px !important;
+        padding: 10px !important;
+    }
+
+    /* Секции Vision/Mission и карточки активностей */
+    .info-row, .info-row.reverse, .activity-grid {
+        flex-direction: column !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    .info-text, .info-img, .activity-card {
+        width: 100% !important;
+        max-width: 500px !important;
+        margin: 10px auto !important;
+        text-align: center !important;
+    }
+}
+
+/* ==========================================================================
+   3. ТОЛЬКО ДЛЯ IPHONE 4 И УЗКИХ ТЕЛЕФОНОВ (max-width: 320px)
+   ========================================================================== */
+@media screen and (max-width: 320px) {
+    
+    /* Контейнеры на весь экран */
+    .container, .tomato-container {
+        width: 100% !important;
+        padding: 0 10px !important;
+    }
+
+    /* Уменьшаем шрифты, чтобы не распирали экран */
+    h1, .hero-content h1, .t-one-title {
+        font-size: 18px !important;
+    }
+
+    /* На iPhone 4 всё строго в одну колонку */
+    .tomato-products-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Прячем поиск, если он всё еще мешает навигации, или уменьшаем его */
+    .search-bar input, .tomato-search-container input {
+        width: 140px !important;
+    }
+
+    /* Футер: ссылки одна под другой */
+    .links-group, .tomato-footer-links {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 8px !important;
+    }
+}
+/* Специальный фикс для страницы контактов (Contact Us) */
+@media screen and (max-width: 1024px) {
+    /* Делаем сетку формы в одну колонку */
+    .contact-form-grid, 
+    form[action*="contact"] .row, 
+    .t-one-main-grid { 
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 15px !important;
+    }
+
+    /* Все поля ввода и подписи на всю ширину */
+    .contact-form-grid div, 
+    form input, 
+    form select, 
+    form textarea {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* Лечим капчу и кнопку "Send Message" */
+    .captcha-container, 
+    .send-container,
+    div[class*="captcha"] {
+        display: flex !important;
+        flex-direction: column !important; /* Капча над инпутом */
+        align-items: center !important;
+        gap: 10px !important;
+        width: 100% !important;
+    }
+
+    /* Чтобы капча не вылезала (как на скриншоте) */
+    .captcha-code, 
+    div[style*="border: 1px solid"] { 
+        width: auto !important;
+        display: inline-block !important;
+    }
+
+    /* Кнопка отправки: центрируем и возвращаем из "небытия" */
+    .btn-send, 
+    button[type="submit"], 
+    .button-green,
+    .contact-form-grid + div {
+        width: 100% !important;
+        max-width: 280px !important; /* Чтобы влезла в iPhone 4 */
+        margin: 20px auto !important;
+        position: static !important; /* Убираем абсолютное позиционирование, если оно было */
+        display: block !important;
+    }
+}
+
+/* Фикс для iPhone 4 (320px) */
+@media screen and (max-width: 320px) {
+    .contact-form-grid {
+        padding: 0 5px !important;
+    }
+
+    /* Уменьшаем капчу, если она всё еще большая */
+    .captcha-img {
+        transform: scale(0.9);
+    }
+}
+/* Фикс для текстовых колонок на странице Tomato */
+@media screen and (max-width: 1024px) {
+    /* Находим контейнер, где лежат эти три колонки текста */
+    /* Скорее всего у него класс вроде .tomato-breeding-grid или .tomato-programs */
+    .tomato-breeding-grid, 
+    .tomato-breeding-container,
+    .tomato-main-content .row { 
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        padding: 0 10px !important;
+    }
+
+    /* Сами блоки с текстом */
+    .breeding-item, 
+    .tomato-program-card,
+    .tomato-breeding-grid > div {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-bottom: 30px !important;
+        padding: 0 !important;
+        border: none !important; /* Убираем разделители, если они мешают */
+    }
+
+    /* Выравниваем заголовки и текст по центру для мобилок */
+    .breeding-item h2, 
+    .breeding-item h3, 
+    .breeding-item p {
+        text-align: left !important;
+        word-wrap: break-word !important; /* Чтобы длинные слова не резали экран */
+    }
+}
+
+/* Экстремальный фикс для iPhone 4 */
+@media screen and (max-width: 320px) {
+    .breeding-item h2 {
+        font-size: 1.2rem !important;
+    }
+    
+    .breeding-item p {
+        font-size: 14px !important;
+        line-height: 1.4 !important;
+    }
+}
+/* Фикс иконки поиска для мобильных версий */
+@media screen and (max-width: 1024px) {
+    
+    /* Контейнер поиска должен быть позиционирован относительно */
+    .tomato-search-container, .search-bar {
+        position: relative !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important; /* Центрируем саму полосу */
+        width: 100% !important;
+        max-width: 280px !important;
+        margin: 0 auto 15px auto !important;
+    }
+
+    /* Само поле ввода */
+    .tomato-search-container input, .search-bar input {
+        width: 100% !important;
+        padding-right: 35px !important; /* Оставляем место под лупу справа */
+        text-align: left !important;    /* Текст пишем слева */
+    }
+
+    /* Иконка лупы — прижимаем вправо */
+    .tomato-search-container i, .tomato-search-container .fa-search, 
+    .search-bar i, .search-bar .fa-search {
+        position: absolute !important;
+        right: 10px !important;         /* Отступ от правого края инпута */
+        left: auto !important;          /* Сбрасываем центрирование по левому краю */
+        top: 50% !important;
+        transform: translateY(-50%) !important; /* Идеальный центр по вертикали */
+        margin: 0 !important;
+        color: #666 !important;
+    }
+}
+
+/* Дополнительный фикс для навигации под лупой (как на твоем скрине) */
+@media screen and (max-width: 480px) {
+    .tomato-nav ul {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 10px 15px !important;
+    }
+    
+    /* Ссылка "Return to all tomatoes" */
+    .t-one-back-link {
+        display: block !important;
+        text-align: center !important;
+        margin: 15px 0 !important;
+        font-weight: bold;
+    }
+}
