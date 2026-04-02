@@ -2,32 +2,36 @@
 <html lang="uk"> 
 <head> 
     <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="viewport" content="width=320, initial-scale=1.0"/>
     <title>Agridera Seeds & Agriculture</title> 
     <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="responsive.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> 
 </head> 
 <body> 
  
     <section class="hero" style="background-image: url('hero-bg.jpg');"> 
-        <header class="header"> 
-            <div class="container header-flex"> 
-                <div class="logo"><img src="logo.png" alt="Agridera"></div> 
-                <div class="header-right"> 
+        <header class="header" style="background: white; padding: 10px 0;"> 
+            <div class="container header-flex" style="display: flex; justify-content: space-between; align-items: flex-end;"> 
+                <div class="logo"><img src="logo.png" alt="Agridera" style="height: 70px;"></div> 
+                
+                <div class="header-right" style="display: flex; flex-direction: column; align-items: flex-end;"> 
+                    
+                    <div class="search-bar" style="margin-bottom: 10px; border-bottom: 1px solid #ccc; padding-bottom: 5px; display: flex; align-items: center;"> 
+                        <input type="text" placeholder="Search" style="border: none; background: none; outline: none; color: #333; padding: 5px;"> 
+                        <i class="fas fa-search" style="color: #666;"></i> 
+                    </div> 
+
                     <nav class="nav"> 
-                        <ul> 
-                            <li><a href="index.html">Home</a></li> 
-                            <li><a href="#">Company Profile</a></li> 
-                            <li><a href="tomato.html">Products</a></li>
-                            <li><a href="#">Services</a></li> 
-                            <li><a href="#">R&D</a></li> 
-                            <li><a href="#">Contact</a></li> 
+                        <ul style="list-style: none; padding: 0; margin: 0; display: flex; gap: 20px;"> 
+                            <li><a href="index.html" style="text-decoration: none; color: #333; font-weight: bold; font-size: 13px;">Home</a></li> 
+                            <li><a href="#" style="text-decoration: none; color: #333; font-weight: bold; font-size: 13px;">Company Profile</a></li> 
+                            <li><a href="./tomato.html" style="text-decoration: none; color: #333; font-weight: bold; font-size: 13px;">Products</a></li>
+                            <li><a href="#" style="text-decoration: none; color: #333; font-weight: bold; font-size: 13px;">Services</a></li> 
+                            <li><a href="#" style="text-decoration: none; color: #333; font-weight: bold; font-size: 13px;">R&D</a></li> 
+                            <li><a href="contact.html" style="text-decoration: none; color: #333; font-weight: bold; font-size: 13px;">Contact</a></li> 
                         </ul> 
                     </nav> 
-                    <div class="search-bar"> 
-                        <input type="text" placeholder="Search"> 
-                        <i class="fas fa-search"></i> 
-                    </div> 
                 </div> 
             </div> 
         </header> 
@@ -115,11 +119,11 @@
                 <nav class="footer-nav"> 
                     <a href="index.html">PROFILE</a>
                     <a href="#">MANAGEMENT</a>
-                    <a href="./tomato.html">PRODUCTS</a>
+                    <a href="tomato.html">PRODUCTS</a>
                     <a href="#">R&D</a>
                     <a href="#">LINKS</a>
                     <a href="#">SITEMAP</a>
-                    <a href="#">CONTACT</a> 
+                    <a href="contact.html">CONTACT</a> 
                 </nav> 
                 <div class="social-icons"> 
                     <a href="#"><i class="fab fa-linkedin-in"></i></a> 
