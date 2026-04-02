@@ -2,14 +2,16 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-     <meta name="viewport" content="width=320, initial-scale=1.0"/>
-    <title>TAG 1002 - Agridera</title>
+    <meta name="viewport" content="width=320, initial-scale=1.0"/>
+    <title>{{ product.title }} - Agridera</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="responsive.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="main.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="t-one-body">
-
+<div id="app">
     <img src="watermark-tomatoes.png" class="t-one-bg-watermark" alt="">
 
     <header class="tomato-header">
@@ -17,7 +19,7 @@
             <div class="tomato-logo">
                 <a href="index.html"><img src="logo.png" alt="Agridera"></a>
             </div>
-
+            
             <div style="display: flex; flex-direction: column; align-items: flex-end;">
                 <div class="tomato-search-container" style="margin-bottom: 15px;">
                     <input type="text" placeholder="Search">
@@ -38,92 +40,96 @@
         </div>
     </header>
 
-    <div class="tomato-container t-one-content">
-        <a href="tomato.html" class="t-one-back-link">← Return to all tomatoes</a>
+    <div class="tomato-container t-one-content" v-if="product && product.id">
+        <a href="tomato.html" class="t-one-back-link">← Return to all products</a>
 
         <div class="t-one-main-grid">
             <div class="t-one-info">
-                <h1 class="t-one-title">TAG 1002 (TAG 809)</h1>
-                <div class="t-one-subtitle">Tomato Determinate Red Standard Round</div>
-                <div class="tomato-stars">*****</div>
+                <h1 class="t-one-title">{{ product.title }}</h1>
+                <div class="t-one-subtitle">{{ product.short_text }}</div>
+                <div class="tomato-stars" style="color: #e10a17; margin-bottom: 15px;">*****</div>
 
-                <div class="t-one-promo-badge">
-                    <img src="red-tomatoes-icon.png" class="t-one-promo-icon" alt="Very high yield icon">
-                    <div class="t-one-promo-text">Very high yield and<br>excellent fruits quality!</div>
+                <div class="t-one-promo-badge" style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px;">
+                    <img src="red-tomatoes-icon.png" class="t-one-promo-icon" alt="Quality icon" style="width: 50px;">
+                    <div class="t-one-promo-text" style="font-weight: bold; color: #444;">
+                        Very high yield and<br>excellent fruits quality!
+                    </div>
                 </div>
 
-                <h3 class="t-one-section-title">Characteristics</h3>
+                <h3 class="t-one-section-title" style="border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-bottom: 15px;">Characteristics</h3>
                 
                 <div style="margin-bottom: 20px;">
-                    <strong>Resistance</strong><br>
-                    <small>HR: ToMV:0-2; Fol: 1,2; Ve/Vd;<br>IR: TYLCV</small>
+                    <p style="line-height: 1.6; color: #333;">{{ product.desc }}</p>
                 </div>
 
-                <div class="t-one-specs">
+                <div class="t-one-specs" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                     <div class="t-one-spec-block">
-                        <h4>Plant</h4>
-                        <ul>
-                            <li>Strong vigor that provides good leaf coverage.</li>
-                            <li>Very high productivity with good fruit setting.</li>
-                            <li>Early matured variety.</li>
+                        <h4 style="color: #e10a17; margin-bottom: 10px;">Plant</h4>
+                        <ul style="padding-left: 15px; font-size: 0.9em;">
+                            <li>Strong vigor and coverage</li>
+                            <li>High productivity</li>
+                            <li>Early matured variety</li>
                         </ul>
                     </div>
                     <div class="t-one-spec-block">
-                        <h4>Cycle</h4>
-                        <ul>
-                            <li>Spring</li>
-                            <li>Fall</li>
-                            <li>Winter</li>
+                        <h4 style="color: #e10a17; margin-bottom: 10px;">Fruit</h4>
+                        <ul style="padding-left: 15px; font-size: 0.9em;">
+                            <li>Long shelf life</li>
+                            <li>Shiny attractive color</li>
+                            <li>Firm and tasty</li>
                         </ul>
-                    </div>
-                    <div class="t-one-spec-block">
-                        <h4>Fruit</h4>
-                        <ul>
-                            <li>Long shelf life on plant and post harvest.</li>
-                            <li>Nice shiny attractive deep red color.</li>
-                            <li>Average fruit size: 140 – 160 grams.</li>
-                        </ul>
-                    </div>
-                    <div class="t-one-spec-block">
-                        <h4>Color</h4>
-                        <p style="padding-left: 15px;">Red</p>
                     </div>
                 </div>
             </div>
 
-            <div class="t-one-image-side">
-                <img src="tag-1002-big.jpg" alt="TAG 1002 big">
-                <br>
-                <a href="#" class="t-one-download-btn">
-                    <i class="fa-regular fa-file-pdf"></i> Download PDF
-                </a>
+            <div class="t-one-image-side" style="text-align: center;">
+                <img :src="product.image" :alt="product.title" class="t-one-main-img" style="max-width: 100%; border: 1px solid #eee; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-bottom: 20px;">
+                
+                <div class="cart-action-area">
+                    <button v-if="btnVisible == 0" 
+                            @click="addToCart(product.id)" 
+                            class="t-one-download-btn" 
+                            style="border: none; cursor: pointer; width: 100%; padding: 15px; font-size: 1.1em; background-color: #e10a17; color: white; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s;">
+                        <i class="fa fa-shopping-cart"></i> ADD TO CART
+                    </button>
+
+                    <a v-if="btnVisible == 1" 
+                       href="contact.html" 
+                       class="t-one-download-btn" 
+                       style="text-decoration: none; width: 100%; padding: 15px; font-size: 1.1em; background-color: #28a745; color: white; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s;">
+                        <i class="fa fa-check-circle"></i> GO TO CART
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-
-    <footer class="tomato-footer">
-        <div class="tomato-container">
-            <div class="tomato-footer-links" style="display: flex; justify-content: space-between; align-items: center;">
-                <div class="links-group">
-                    <a href="#">PROFILE</a>
+    
+    <footer class="site-footer"> 
+        <div class="footer-top"> 
+            <div class="container footer-top-flex"> 
+                <nav class="footer-nav"> 
+                    <a href="index.html">PROFILE</a>
                     <a href="#">MANAGEMENT</a>
                     <a href="tomato.html">PRODUCTS</a>
                     <a href="#">R&D</a>
-                    <a href="contact.html">CONTACT</a>
-                </div>
-                <div class="tomato-socials">
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                </div>
-            </div>
+                    <a href="#">LINKS</a>
+                    <a href="#">SITEMAP</a>
+                    <a href="contact.html">CONTACT</a> 
+                </nav> 
+                <div class="social-icons"> 
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a> 
+                    <a href="#"><i class="fab fa-instagram"></i></a> 
+                    <a href="#"><i class="fab fa-youtube"></i></a> 
+                    <a href="#"><i class="fab fa-twitter"></i></a> 
+                    <a href="#"><i class="fab fa-facebook-f"></i></a> 
+                </div> 
+            </div> 
+        </div> 
             <div class="tomato-copy">
                 AGRIDERA SEEDS & AGRICULTURE LTD. © 2020
             </div>
         </div>
     </footer>
-
+</div>
 </body>
 </html>
