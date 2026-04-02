@@ -2,33 +2,38 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=320, initial-scale=1.0"/>
     <title>Agridera - Tomato Hybrids</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="tomato-body">
 
     <header class="tomato-header">
-        <div class="tomato-container tomato-header-top">
+        <div class="tomato-container tomato-header-top" style="display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 10px;">
             <div class="tomato-logo">
                 <a href="index.html"><img src="logo.png" alt="Agridera Logo"></a>
             </div>
-            <div class="tomato-search-container">
-                <input type="text" placeholder="Search">
-                <i class="fa fa-search"></i>
+            
+            <div style="display: flex; flex-direction: column; align-items: flex-end;">
+                <div class="tomato-search-container" style="margin-bottom: 15px;">
+                    <input type="text" placeholder="Search">
+                    <i class="fa fa-search"></i>
+                </div>
+                
+                <nav class="tomato-nav">
+                    <ul style="list-style: none; padding: 0; margin: 0; display: flex; gap: 20px;">
+                        <li><a href="index.html" style="text-decoration: none; color: inherit; font-weight: bold;">Home</a></li>
+                        <li><a href="#" style="text-decoration: none; color: inherit; font-weight: bold;">Company Profile</a></li>
+                        <li><a href="tomato.html" style="text-decoration: none; color: inherit; font-weight: bold;">Products</a></li>
+                        <li><a href="#" style="text-decoration: none; color: inherit; font-weight: bold;">Services</a></li>
+                        <li><a href="#" style="text-decoration: none; color: inherit; font-weight: bold;">R & D</a></li>
+                        <li><a href="contact.html" style="text-decoration: none; color: inherit; font-weight: bold;">Contact</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
-        <nav class="tomato-nav">
-            <ul class="tomato-container">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#">Company Profile</a></li>
-                <li><a href="tomato.html">Products</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">R & D</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
     </header>
 
     <section class="tomato-hero">
@@ -141,7 +146,7 @@
                     <a href="#">R&D</a>
                     <a href="#">LINKS</a>
                     <a href="#">SITEMAP</a>
-                    <a href="#">CONTACT</a>
+                    <a href="contact.html">CONTACT</a>
                 </div>
                 <div class="tomato-socials">
                     <a href="#"><i class="fab fa-linkedin-in"></i></a>
