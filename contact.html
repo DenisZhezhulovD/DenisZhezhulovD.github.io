@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=320, initial-scale=1.0"/>
+    <title>Contact Us - Agridera</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #555;
+            background-color: #ffffff;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        /* Header */
+        .header {
+            background: #fff;
+            padding: 10px 0;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding-bottom: 10px;
+        }
+
+        .logo img {
+            height: 70px;
+            display: block;
+        }
+
+        .header-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .search-bar {
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input {
+            border: none;
+            padding: 5px;
+            outline: none;
+            font-size: 13px;
+        }
+
+        .search-bar button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 13px;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: #5e934a;
+        }
+
+        /* Banner */
+        .banner {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .banner img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Main Content */
+        .contact-section {
+            padding: 40px 0;
+        }
+
+        h1 {
+            font-size: 32px;
+            color: #3e5a42;
+            margin-bottom: 5px;
+            font-weight: 400;
+        }
+
+        .divider {
+            color: #8db546;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            font-size: 12px;
+        }
+
+        /* Form Layout */
+        .contact-form {
+            background: #fcfcfc;
+            padding: 20px 0;
+        }
+
+        .form-grid {
+            display: flex;
+            gap: 50px;
+        }
+
+        .form-col {
+            flex: 1;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 5px;
+            color: #666;
+        }
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background: #fff;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 250px;
+        }
+
+        
+        .captcha-row {
+            margin-top: 20px;
+        }
+
+        .captcha-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .captcha-code {
+            font-family: serif;
+            font-style: italic;
+            font-size: 18px;
+            color: #444;
+        }
+
+        .captcha-input {
+            width: 100px !important;
+        }
+
+        .submit-btn {
+            background-color: #5e934a;
+            color: white;
+            border: none;
+            padding: 12px 35px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #4a753a;
+        }
+
+        /* Address */
+        .address-section {
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .address-section h3 {
+            color: #5e934a;
+            border-bottom: 2px solid #5e934a;
+            display: inline-block;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+
+        .address-section p {
+            margin: 5px 0;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .green-text {
+            color: #5e934a;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #334148;
+            color: #fff;
+            padding: 30px 0 10px;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #44555d;
+            margin-bottom: 15px;
+        }
+
+        .footer-nav a {
+            color: #9eb1bb;
+            text-decoration: none;
+            margin-right: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-circle {
+            width: 24px;
+            height: 24px;
+            background: #44555d;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 11px;
+            color: #7a8e98;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container header-inner">
+            <div class="logo">
+                <img src="logo.png" alt="Agridera Seeds & Agriculture">
+            </div>
+            <div class="header-right">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search">
+                    <button>🔍</button>
+                </div>
+                <nav class="nav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#">Company Profile</a></li>
+                        <li><a href="tomato.html">Products</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">R & D</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="banner">
+        <img src="banner.jpg" alt="Agridera Fields">
+    </section>
+
+    <main class="container">
+        <section class="contact-section">
+            <h1>Contact us</h1>
+            <div class="divider">*****</div>
+
+            <form class="contact-form" action="#" method="post">
+                <div class="form-grid">
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label>Name *</label>
+                            <input type="text" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Company Name</label>
+                            <input type="text" name="company">
+                        </div>
+                        <div class="form-group">
+                            <label>Position</label>
+                            <input type="text" name="position">
+                        </div>
+                        <div class="form-group">
+                            <label>City</label>
+                            <input type="text" name="city">
+                        </div>
+                        <div class="form-group">
+                            <label>Country</label>
+                            <input type="text" name="country">
+                        </div>
+                        <div class="form-group">
+                            <label>Telephone</label>
+                            <input type="tel" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label>Email *</label>
+                            <input type="email" name="email" required>
+                        </div>
+                    </div>
+
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label>You are a</label>
+                            <select name="user_type">
+                                <option value="seed_producer">seed producer</option>
+                                <option value="distributor">distributor</option>
+                                <option value="farmer">farmer</option>
+                                <option value="other">other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>If other, please specify</label>
+                            <input type="text" name="user_type_other">
+                        </div>
+                        <div class="form-group">
+                            <label>You are interested in</label>
+                            <textarea name="message"></textarea>
+                        </div>
+                        
+                        <div class="captcha-row">
+                            <label>Please type this code</label>
+                            <div class="captcha-container">
+                                <span class="captcha-code">7 C J 3</span>
+                                <input type="text" class="captcha-input" required>
+                                <button type="submit" class="submit-btn">Send Message</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <section class="address-section">
+            <h3>Our Address</h3>
+            <p>AGRIDERA Seeds & Agriculture Ltd.</p>
+            <p>P.O Box 103,</p>
+            <p>Gedera 70750, Israel.</p>
+            <p>Telephone: <span class="green-text">+972 8 944 9222</span></p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <nav class="footer-nav">
+                    <a href="index.html">PROFILE</a>
+                    <a href="#">MANAGEMENT</a>
+                    <a href="tomato.html">PRODUCTS</a>
+                    <a href="#">R&D</a>
+                    <a href="#">LINKS</a>
+                    <a href="#">SITEMAP</a>
+                    <a href="#">CONTACT</a>
+                </nav>
+                <div class="social-links">
+                    <a href="#" class="social-circle">in</a>
+                    <a href="#" class="social-circle">ig</a>
+                    <a href="#" class="social-circle">yt</a>
+                    <a href="#" class="social-circle">tw</a>
+                    <a href="#" class="social-circle">fb</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                AGRIDERA SEEDS & AGRICULTURE LTD. © 2020
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
