@@ -263,3 +263,110 @@ html, body {
         font-weight: bold;
     }
 }
+/* Фикс иконок продуктов (Wheat, Watermelon и т.д.) */
+@media screen and (max-width: 1024px) {
+    /* Контейнер, где лежат иконки */
+    .products-list, 
+    .tomato-products-grid,
+    div[style*="position: relative"] > .container {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        align-items: flex-start !important;
+        gap: 20px !important;
+        position: relative !important;
+        height: auto !important; /* Убираем фиксированную высоту, если она была */
+        min-height: 100px;
+    }
+
+    /* Сами элементы (иконка + текст) */
+    .products-list > div,
+    .tomato-products-grid > div,
+    a[href*="product"], 
+    .product-item {
+        position: static !important; /* ГЛАВНОЕ: отменяем ручное позиционирование */
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 140px !important;     /* Ширина одной кнопки */
+        margin: 0 !important;
+        text-align: center !important;
+    }
+
+    /* Иконки внутри кнопок */
+    .products-list img, 
+    .tomato-products-grid img,
+    .product-item img {
+        max-width: 60px !important;
+        height: auto !important;
+        margin-bottom: 10px !important;
+    }
+}
+
+/* Для самых маленьких экранов (iPhone 4) */
+@media screen and (max-width: 320px) {
+    .nav ul, .tomato-nav ul {
+        gap: 8px 10px !important;
+    }
+    .nav ul li a {
+        font-size: 13px !important;
+    }
+    .products-list > div {
+        width: 45% !important; /* По две в ряд на узком экране */
+    }
+}
+/* ==========================================================================
+   ИСПРАВЛЕНИЕ БЛОКА ИКОНОК (PRODUCT-BAR)
+   ========================================================================== */
+@media screen and (max-width: 1024px) {
+    
+    /* 1. Делаем контейнер гибким */
+    .product-bar {
+        background: #fdfaf4 !important; /* Цвет фона как на скрине */
+        padding: 20px 0 !important;
+        height: auto !important;
+    }
+
+    .bar-flex {
+        display: flex !important;
+        flex-wrap: wrap !important; /* Разрешаем перенос на новые строки */
+        justify-content: center !important; /* Центрируем иконки */
+        align-items: center !important;
+        gap: 20px 10px !important; /* Расстояние между иконками */
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* 2. Сбрасываем все стили у картинок и ссылок внутри бара */
+    .bar-flex img, 
+    .bar-flex a {
+        position: static !important; /* Отменяем absolute, если он был */
+        margin: 0 !important;
+        display: block !important;
+    }
+
+    .bar-flex img {
+        width: auto !important;
+        max-width: 100px !important; /* Ограничиваем размер, чтобы влезли */
+        height: 50px !important;     /* Выравниваем по высоте */
+        object-fit: contain !important;
+    }
+
+    /* Специальный фикс для иконки с плюсиком (More products) */
+    .img-double {
+        max-width: 120px !important;
+        height: auto !important;
+    }
+}
+
+/* Фикс для iPhone 4 и узких экранов (320px) */
+@media screen and (max-width: 320px) {
+    .bar-flex {
+        gap: 15px 5px !important;
+    }
+    
+    .bar-flex img {
+        max-width: 80px !important;
+        height: 40px !important;
+    }
+}
