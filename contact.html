@@ -51,7 +51,6 @@
         .social-circle { width: 24px; height: 24px; background: #44555d; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #fff; text-decoration: none; }
         .footer-bottom { text-align: center; font-size: 11px; color: #7a8e98; padding-top: 10px; }
 
-        /* СТИЛИ КОРЗИНЫ И КРЕСТИКА */
         .cart-items-wrapper {
             display: flex;
             flex-wrap: wrap;
@@ -68,7 +67,7 @@
             border: 1px solid #ddd;
             padding: 8px;
             text-align: center;
-            position: relative; /* Чтобы крестик прилип к углу карточки */
+            position: relative;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
         .cart-product-card img {
@@ -84,7 +83,6 @@
             line-height: 1.2;
             color: #333;
         }
-        /* Стиль самого крестика */
         .remove-btn {
             position: absolute;
             top: -10px;
@@ -160,7 +158,7 @@
                 </div>
             </div>
 
-            <form class="contact-form" action="#" method="post">
+            <form class="contact-form" @submit.prevent="submitForm">
                 <div class="form-grid">
                     <div class="form-col">
                         <div class="form-group">
@@ -216,7 +214,7 @@
                             <label>Please type this code</label>
                             <div class="captcha-container">
                                 <span class="captcha-code">7 C J 3</span>
-                                <input type="text" class="captcha-input" required>
+                                <input type="text" name="captcha" class="captcha-input" required>
                                 <button type="submit" class="submit-btn">Send Message</button>
                             </div>
                         </div>
@@ -265,6 +263,25 @@
     window.onload = function() {
         if (window.app) {
             app.getCart();
+
+            // ИСПРАВЛЕНИЕ: Добавление метода отправки в объект Vue
+            app.submitForm = function(event) {
+                // Сбор данных из полей формы
+                const formData = new FormData(event.target);
+                const results = Object.fromEntries(formData.entries());
+                
+                // Проверка капчи (простая)
+                if (results.captcha.replace(/\s+/g, '').toUpperCase() !== "7CJ3") {
+                    alert("Неверный код капчи!");
+                    return;
+                }
+
+                console.log("Данные к отправке:", results);
+                console.log("Товары в корзине:", this.cart);
+
+                alert("Сообщение успешно отправлено!");
+                // Здесь можно добавить реальный запрос fetch() к серверу
+            };
         }
     };
 </script>
